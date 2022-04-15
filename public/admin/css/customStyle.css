@@ -1,0 +1,145 @@
+.card.coderDairy__problem_card_meta {
+    border: 0;
+}
+.card.coderDairy__problem_card_meta .card-body {
+    padding: 0rem;
+}
+.coderDairy__problem_media_image {
+    text-align: center;
+}
+
+.coderDairy__problem_media_image img {
+    transition: 1s;
+    padding: 0.2rem;
+    display: inline-block;
+}
+.coderDairy__problem_media_image img:hover {
+    filter: grayscale(100%);
+    transform: scale(1.1);
+}
+
+.lb-nav a.lb-next {
+    /* background: url(../images/next.png) right 48% no-repeat; */
+    background: url("../public/admin/img/next.png") right 48% no-repeat;
+}
+
+/**
+Custom style
+*/
+
+/* form style */
+
+.formLabel {
+    margin-bottom: 0.25rem;
+    display: block;
+    cursor: pointer;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.formInput {
+    width: 100%;
+    border-radius: 0.125rem;
+}
+
+[type="text"],
+[type="email"],
+[type="url"],
+[type="password"],
+[type="number"],
+[type="date"],
+[type="datetime-local"],
+[type="month"],
+[type="search"],
+[type="tel"],
+[type="time"],
+[type="week"],
+[multiple],
+textarea,
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    border-color: #6b7280;
+    border-width: 1px;
+    border-radius: 0px;
+    padding-top: 0.5rem;
+    padding-right: 0.75rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    --tw-shadow: 0 0 #0000;
+}
+
+[type="text"]:focus,
+[type="email"]:focus,
+[type="url"]:focus,
+[type="password"]:focus,
+[type="number"]:focus,
+[type="date"]:focus,
+[type="datetime-local"]:focus,
+[type="month"]:focus,
+[type="search"]:focus,
+[type="tel"]:focus,
+[type="time"]:focus,
+[type="week"]:focus,
+[multiple]:focus,
+textarea:focus,
+select:focus {
+    outline-color: gray;
+}
+
+/**
+Coder Dairy Accordion
+*/
+
+.coderDairy__accrodion {
+    /* max-width: 500px; */
+}
+
+.coderDairy__accrodion .accordion_content {
+    position: relative;
+    margin: 10px 20px;
+}
+
+.coderDairy__accrodion .accordion_content .label {
+    position: relative;
+    padding: 10px;
+    /* background: #2694af; */
+    color: #ffffff;
+    cursor: pointer;
+}
+.coderDairy__accrodion .accordion_content .label::before {
+    position: absolute;
+    content: "+";
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+}
+.coderDairy__accrodion .accordion_content.active .label::before {
+    content: "-";
+}
+.coderDairy__accrodion .accordion_content .content {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    transition: 0.5s;
+    overflow-y: auto;
+}
+.coderDairy__accrodion .accordion_content.active .content {
+    height: auto;
+    padding: 1rem;
+}
+
+/* checkbox style */
+
+input[type="checkbox"] {
+    /* appearance: none; */
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: #d5d5d5;
+    border-radius: 0.2rem;
+}
