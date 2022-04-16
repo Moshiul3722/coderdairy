@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TagController extends Controller
 {
@@ -14,7 +15,9 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.tag.index')->with([
+            'tags'  => Tag::orderBy('name', 'ASC')->paginate(10)
+        ]);
     }
 
     /**
@@ -24,7 +27,9 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view(
+            'admin.tag.create'
+        );
     }
 
     /**
@@ -35,7 +40,21 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->tagValidation($request);
+
+        try {
+            // Category store in database
+            Tag::create([
+                'name'      =>  $request->name,
+                'slug'      =>  Str::slug($request->name),
+                'status'    =>  $request->status
+            ]);
+
+            // return response
+            return redirect()->route('tag.index')->with('success', 'Tag Created');
+        } catch (\Throwable $th) {
+            return redirect()->route('Tag.index')->with('error', $th->getMessage());
+        }
     }
 
     /**
@@ -57,7 +76,9 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+        return view('admin.tag.edit')->with([
+            'tag' => $tag
+        ]);
     }
 
     /**
@@ -69,7 +90,23 @@ class TagController extends Controller
      */
     public function update(Request $request, Tag $tag)
     {
-        //
+        // Category validation
+        $this->tagValidation($request);
+
+        try {
+            //Update category
+            $tag->update([
+                'name'      => $request->name,
+                'slug'      => Str::slug($request->name),
+                'status'    => $request->status
+            ]);
+
+            // return response
+            return redirect()->route('tag.index')->with('success', 'tag Updated');
+        } catch (\Throwable $th) {
+            //throw $th
+            return redirect()->route('tag.index')->with('error', $th->getMessage());
+        }
     }
 
     /**
@@ -80,6 +117,15 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        //
+        $tag->delete();
+        return redirect()->route('tag.index')->with('success', 'Tag Deleted');
+    }
+
+    public function tagValidation(Request $request)
+    {
+        return $request->validate([
+            'name'      => ['required', 'max:255', 'string'],
+            'status'    => ['not_in:none', 'string']
+        ]);
     }
 }

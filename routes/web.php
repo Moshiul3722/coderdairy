@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProblemController;
+use App\Http\Controllers\TagController;
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 
@@ -27,7 +29,9 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
         return view('admin.index');
     })->name('dashboard');
 
-    Route::resource('problem',ProblemController::class);
+    Route::resource('problem', ProblemController::class);
+    Route::resource('category', CategoryController::class);
+    Route::resource('tag', TagController::class);
 });
 
 

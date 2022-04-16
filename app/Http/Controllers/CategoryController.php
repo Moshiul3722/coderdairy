@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -14,7 +15,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.category.index')->with([
+            'caterories'  => Category::orderBy('name', 'ASC')->paginate(10)
+        ]);
     }
 
     /**
@@ -24,7 +27,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view(
+            'admin.category.create'
+        );
     }
 
     /**
@@ -35,7 +40,34 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Category validation
+        $this->categoryValidation($request);
+
+        try {
+            // Category store in database
+            Category::create([
+                'name'      =>  $request->name,
+                'slug'      =>  Str::slug($request->name),
+                'status'    =>  $request->status
+            ]);
+
+            // return response
+            return redirect()->route('category.index')->with('success', 'Category Created');
+        } catch (\Throwable $th) {
+            return redirect()->route('category.index')->with('error', $th->getMessage());
+        }
+
+        // $category_name = Category::find($request->name);
+        // $category_name = Category::where('name', "=", $request->name)->first();
+        // dd($category_name);
+        // if ($category_name) {
+        //     return redirect()->route('category.edit')->with([
+        //         'category' => Category::all(),
+        //         'error' => 'This Category Already Exist'
+        //     ]);
+        // } else {
+
+        // }
     }
 
     /**
@@ -57,7 +89,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.category.edit')->with([
+            'category' => $category
+        ]);
     }
 
     /**
@@ -69,7 +103,23 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        // Category validation
+        $this->categoryValidation($request);
+
+        try {
+            //Update category
+            $category->update([
+                'name'      => $request->name,
+                'slug'      => Str::slug($request->name),
+                'status'    => $request->status
+            ]);
+
+            // return response
+            return redirect()->route('category.index')->with('success', 'Category Updated');
+        } catch (\Throwable $th) {
+            //throw $th
+            return redirect()->route('category.index')->with('error', $th->getMessage());
+        }
     }
 
     /**
@@ -80,6 +130,15 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect()->route('category.index')->with('success', 'Category Deleted');
+    }
+
+    public function categoryValidation(Request $request)
+    {
+        return $request->validate([
+            'name'      => ['required', 'max:255', 'string'],
+            'status'    => ['not_in:none', 'string']
+        ]);
     }
 }

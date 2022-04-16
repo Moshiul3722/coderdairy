@@ -15,7 +15,7 @@
             <!-- end sidebar toggle -->
 
             <!-- link -->
-            <a href="{{route('dashboard')}}"
+            <a href="{{ route('dashboard') }}"
                 class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500 ">
                 <i class="fad fa-chart-pie text-xs mr-2"></i>
                 Dashboard
@@ -33,18 +33,18 @@
             <!-- end link -->
 
             <!-- link -->
-            <a href="#"
-                class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <a href="{{ route('category.index') }}"
+                class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500 {{ request()->routeIs('category.*') ? 'text-teal-600' : '' }}">
                 <i class="fad fa-comments text-xs mr-2"></i>
                 Categories
             </a>
             <!-- end link -->
 
             <!-- link -->
-            <a href="#"
-                class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                <i class="fad fa-shield-check text-xs mr-2"></i>
-                Activity
+            <a href="{{ route('tag.index') }}"
+                class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500 {{ request()->routeIs('tag.*') ? 'text-teal-600' : '' }}">
+                <i class="fad fa-comments text-xs mr-2"></i>
+                Tags
             </a>
             <!-- end link -->
 
