@@ -3,6 +3,11 @@
     <!-- General Report -->
     <div class="grid grid-cols-4 gap-6 xl:grid-cols-1">
 
+
+        <x-admin.notification />
+
+
+
         <!-- Start Problems List -->
         <div class="card col-span-4 xl:col-span-1">
             <div class="card-heade uppercase pt-6 px-4 flex items-center justify-between">
@@ -25,29 +30,11 @@
                                     <p class="text-red-700">{{ $message }}</p>
                                 @enderror
                             </div>
-
-                            <div class="flex-1 ml-2">
-                                <label for="status" class="formLabel">Status</label>
-                                <select name="status" id="status" class="formInput">
-                                    <option value="none" {{ old('status') == 'none' ? 'selected' : '' }}>Select Status
-
-                                    </option>
-                                    <option value="active" {{ old('status') == 'private' ? 'selected' : '' }}>Active
-                                    </option>
-                                    <option value="inactive {{ old('status') == 'public' ? 'selected' : '' }}">
-                                        Inactive
-                                    </option>
-                                </select>
-                            </div>
                         </div>
-
-
-
-
 
                         <div class="mb-6 mt-6">
                             <button type="submit"
-                                class="px-10 py-2 bg-teal-600 text-white rounded mt-3 uppercase text-base">Create</button>
+                                class="px-10 py-2 bg-teal-600 text-white rounded mt-3 uppercase text-base flash-message-test">Create</button>
                         </div>
                     </form>
 

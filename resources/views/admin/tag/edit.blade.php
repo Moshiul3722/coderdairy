@@ -27,17 +27,7 @@
                                 @enderror
                             </div>
 
-                            <div class="flex-1 ml-2">
-                                <label for="status" class="formLabel">Status</label>
-                                <select name="status" id="status" class="formInput">
-                                    <option value="none">Select Status</option>
-                                    <option value="active" {{ $tag->status == 'active' ? 'selected' : '' }}>Active
-                                    </option>
-                                    <option value="inactive" {{ $tag->status == 'inactive' ? 'selected' : '' }}>
-                                        Inactive
-                                    </option>
-                                </select>
-                            </div>
+
                         </div>
 
                         <div class="mb-6 mt-6">

@@ -6,7 +6,7 @@
         <!-- Start Problems List -->
         <div class="card col-span-4 xl:col-span-1">
             <div class="card-heade uppercase pt-6 px-4 flex items-center justify-between">
-                <h2 class="font-semibold ml-2">Tag Category</h2>
+                <h2 class="font-semibold ml-2">Tag</h2>
                 <a href="{{ route('tag.index') }}" class="btn-bs-primary">Back</a>
             </div>
 
@@ -26,19 +26,7 @@
                                 @enderror
                             </div>
 
-                            <div class="flex-1 ml-2">
-                                <label for="status" class="formLabel">Status</label>
-                                <select name="status" id="status" class="formInput">
-                                    <option value="none" {{ old('status') == 'none' ? 'selected' : '' }}>Select Status
 
-                                    </option>
-                                    <option value="active" {{ old('status') == 'active' ? 'selected' : '' }}>Active
-                                    </option>
-                                    <option value="inactive {{ old('status') == 'inactive' ? 'selected' : '' }}">
-                                        Inactive
-                                    </option>
-                                </select>
-                            </div>
                         </div>
 
 

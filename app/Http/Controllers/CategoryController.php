@@ -43,31 +43,42 @@ class CategoryController extends Controller
         // Category validation
         $this->categoryValidation($request);
 
-        try {
-            // Category store in database
-            Category::create([
-                'name'      =>  $request->name,
-                'slug'      =>  Str::slug($request->name),
-                'status'    =>  $request->status
-            ]);
 
-            // return response
-            return redirect()->route('category.index')->with('success', 'Category Created');
-        } catch (\Throwable $th) {
-            return redirect()->route('category.index')->with('error', $th->getMessage());
-        }
+
+        // try {
+        //     // Category store in database
+        //     Category::create([
+        //         'name'      =>  $request->name,
+        //         'slug'      =>  Str::slug($request->name)
+        //     ]);
+
+        //     // return response
+        //     return redirect()->route('category.index')->with('success', 'Category Created');
+        // } catch (\Throwable $th) {
+        //     return redirect()->route('category.index')->with('error', $th->getMessage());
+        // }
 
         // $category_name = Category::find($request->name);
-        // $category_name = Category::where('name', "=", $request->name)->first();
-        // dd($category_name);
-        // if ($category_name) {
-        //     return redirect()->route('category.edit')->with([
-        //         'category' => Category::all(),
-        //         'error' => 'This Category Already Exist'
-        //     ]);
-        // } else {
+        $category_name = Category::where('name', "=", $request->name)->first();
 
-        // }
+        // dd($category_name);
+
+        if (!empty($category_name)) {
+            return redirect()->route('category.create')->with('error', 'This Category Already Exist');
+        } else {
+            try {
+                // Category store in database
+                Category::create([
+                    'name'      =>  $request->name,
+                    'slug'      =>  Str::slug($request->name)
+                ]);
+
+                // return response
+                return redirect()->route('category.index')->with('success', 'Category Created');
+            } catch (\Throwable $th) {
+                return redirect()->route('category.index')->with('error', $th->getMessage());
+            }
+        }
     }
 
     /**
@@ -110,8 +121,7 @@ class CategoryController extends Controller
             //Update category
             $category->update([
                 'name'      => $request->name,
-                'slug'      => Str::slug($request->name),
-                'status'    => $request->status
+                'slug'      => Str::slug($request->name)
             ]);
 
             // return response
@@ -137,8 +147,7 @@ class CategoryController extends Controller
     public function categoryValidation(Request $request)
     {
         return $request->validate([
-            'name'      => ['required', 'max:255', 'string'],
-            'status'    => ['not_in:none', 'string']
+            'name'      => ['required', 'max:255', 'string']
         ]);
     }
 }

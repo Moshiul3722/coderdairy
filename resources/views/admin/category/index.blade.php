@@ -6,7 +6,7 @@
         <!-- Start Problems List -->
         <div class="card col-span-4 xl:col-span-1">
             <div class="card-heade uppercase py-2 px-2 flex items-center justify-between">
-                <h2 class="font-semibold ml-2">Problems</h2>
+                <h2 class="font-semibold ml-2">Categories</h2>
 
                 <a href="{{ route('category.create') }}" class="btn-bs-primary">Add</a>
             </div>

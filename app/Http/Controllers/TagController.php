@@ -46,8 +46,7 @@ class TagController extends Controller
             // Category store in database
             Tag::create([
                 'name'      =>  $request->name,
-                'slug'      =>  Str::slug($request->name),
-                'status'    =>  $request->status
+                'slug'      =>  Str::slug($request->name)
             ]);
 
             // return response
@@ -97,8 +96,7 @@ class TagController extends Controller
             //Update category
             $tag->update([
                 'name'      => $request->name,
-                'slug'      => Str::slug($request->name),
-                'status'    => $request->status
+                'slug'      => Str::slug($request->name)
             ]);
 
             // return response
@@ -125,7 +123,6 @@ class TagController extends Controller
     {
         return $request->validate([
             'name'      => ['required', 'max:255', 'string'],
-            'status'    => ['not_in:none', 'string']
         ]);
     }
 }

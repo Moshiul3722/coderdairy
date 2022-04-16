@@ -12,3 +12,9 @@ for (let i = 0; i < accordion.length; i++) {
 
 // ckeditor
 CKEDITOR.replace('description');
+
+// notification
+$('.close-btn').click(function(){
+$('.alert').removeClass("show");
+$('.alert').addClass("hide");
+});
