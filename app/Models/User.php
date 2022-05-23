@@ -37,4 +37,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //Accessor
+
+    public function getImageAttribute($name)
+    {
+        if (str_starts_with($name, 'http')) {
+            return [
+                'url'      => $name,
+            ];
+        } else {
+            return [
+                'url'      => asset('storage/uploads/' . $name),
+                'fileName' => $name
+            ];
+        }
+    }
 }

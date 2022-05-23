@@ -1,18 +1,23 @@
 .card.coderDairy__problem_card_meta {
     border: 0;
 }
+
 .card.coderDairy__problem_card_meta .card-body {
     padding: 0rem;
 }
+
 .coderDairy__problem_media_image {
-    text-align: center;
+    text-align: right;
 }
 
 .coderDairy__problem_media_image img {
     transition: 1s;
     padding: 0.2rem;
     display: inline-block;
+    width: 150px;
+    height: 150px;
 }
+
 .coderDairy__problem_media_image img:hover {
     filter: grayscale(100%);
     transform: scale(1.1);
@@ -23,9 +28,11 @@
     background: url("../img/next.png") right 48% no-repeat;
 }
 
+
 /**
 Custom style
 */
+
 
 /* form style */
 
@@ -91,6 +98,7 @@ select:focus {
     outline-color: gray;
 }
 
+
 /**
 Coder Dairy Accordion
 */
@@ -111,6 +119,7 @@ Coder Dairy Accordion
     color: #ffffff;
     cursor: pointer;
 }
+
 .coderDairy__accrodion .accordion_content .label::before {
     position: absolute;
     content: "+";
@@ -119,9 +128,11 @@ Coder Dairy Accordion
     transform: translateY(-50%);
     font-size: 1.5rem;
 }
+
 .coderDairy__accrodion .accordion_content.active .label::before {
     content: "-";
 }
+
 .coderDairy__accrodion .accordion_content .content {
     position: relative;
     height: 0;
@@ -129,10 +140,12 @@ Coder Dairy Accordion
     transition: 0.5s;
     overflow-y: auto;
 }
+
 .coderDairy__accrodion .accordion_content.active .content {
     height: auto;
     padding: 1rem;
 }
+
 
 /* checkbox style */
 
@@ -144,16 +157,13 @@ input[type="checkbox"] {
     border-radius: 0.2rem;
 }
 
+
 /**
 Notification message style
 */
 
-body {
-    /* overflow: hidden; */
-}
-
 .alert {
-    background: #ffdb9b;
+    /* background: #ffdb9b; */
     padding: 1rem 1rem;
     /* min-width: 42rem; */
     position: absolute;
@@ -183,9 +193,11 @@ body {
         transform: translateX(-10px);
     }
 }
+
 .alert.hide {
     display: none;
 }
+
 .alert .fa-exclamation-triangle {
     position: absolute;
     left: 2rem;
@@ -194,10 +206,11 @@ body {
     color: #ce8500;
     font-size: 2rem;
 }
+
 .alert .msg {
     padding: 0 4.5rem;
     font-size: 1.2rem;
-    color: #ce8500;
+    /* color: #ce8500; */
 }
 
 .alert .close-btn {
@@ -205,7 +218,7 @@ body {
     right: 0px;
     top: 50%;
     transform: translateY(-50%);
-    background: #ffd080;
+    /* background: #ffd080; */
     padding: 2rem 1.8rem;
     cursor: pointer;
 }
@@ -213,8 +226,13 @@ body {
 .close-btn:hover {
     background: #ffc766;
 }
+
 .close-btn .fa-times {
     color: #ce8500;
     font-size: 1.8rem;
     line-height: 4rem;
+}
+
+.userProfileBrowser{
+    height: 200px;
 }

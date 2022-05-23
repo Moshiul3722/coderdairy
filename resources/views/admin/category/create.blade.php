@@ -23,10 +23,14 @@
 
                         <div class="mt-6 flex">
                             <div class="flex-1 mr-2">
-                                <label for="name" class="formLabel">Name</label>
-                                <input type="text" name="name" id="name" placeholder="Category Name" class="formInput"
-                                    value="{{ old('name') }}">
-                                @error('name')
+                                <label for="category_name" class="formLabel">Name</label>
+                                <input type="text" name="category_name" id="category_name" placeholder="Category Name"
+                                    class="formInput" value="{{ Session('category_name') }}">
+
+                                {{-- @if (Session('category_name'))
+                                    <p class="text-red-700">{{ Session('category_name') }}</p>
+                                @endif --}}
+                                @error('category_name')
                                     <p class="text-red-700">{{ $message }}</p>
                                 @enderror
                             </div>

@@ -33,6 +33,16 @@
             <!-- end link -->
 
             <!-- link -->
+            <a href="{{ route('solution.index') }}"
+                class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500 {{ request()->routeIs('solution.*') ? 'text-teal-600' : '' }}">
+                <i class="fad fa-envelope-open-text text-xs mr-2"></i>
+                Solutions
+            </a>
+            <!-- end link -->
+
+            <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">Basic Input</p>
+
+            <!-- link -->
             <a href="{{ route('category.index') }}"
                 class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500 {{ request()->routeIs('category.*') ? 'text-teal-600' : '' }}">
                 <i class="fad fa-comments text-xs mr-2"></i>
@@ -48,39 +58,40 @@
             </a>
             <!-- end link -->
 
-            <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">Problems</p>
-
             <!-- link -->
-            <a href="./email.html"
-                class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <a href="{{ route('activity.index') }}"
+                class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500 {{ request()->routeIs('activity.*') ? 'text-teal-600' : '' }}">
                 <i class="fad fa-envelope-open-text text-xs mr-2"></i>
-                Add
+                Activity
+            </a>
+            <!-- end link -->
+
+            <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">Others</p>
+
+             <!-- link -->
+            <a href="{{ route('profile') }}"
+                class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500 {{ request()->routeIs('profile.*') ? 'text-teal-600' : '' }}">
+                <i class="fad fa-envelope-open-text text-xs mr-2"></i>
+                User Profile
             </a>
             <!-- end link -->
 
             <!-- link -->
-            <a href="#"
-                class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                <i class="fad fa-comments text-xs mr-2"></i>
-                Edit
+            <a href="{{ route('phone.index') }}"
+                class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500 {{ request()->routeIs('phone.*') ? 'text-teal-600' : '' }}">
+                <i class="fad fa-envelope-open-text text-xs mr-2"></i>
+                Phone Number
             </a>
             <!-- end link -->
 
+            <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">Front View</p>
             <!-- link -->
-            <a href="#"
-                class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                <i class="fad fa-shield-check text-xs mr-2"></i>
-                Delete
+            <a href="{{ route('index') }}"
+                class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500 {{ request()->routeIs('index.*') ? 'text-teal-600' : '' }}">
+                <i class="fad fa-envelope-open-text text-xs mr-2"></i>
+                Go to Front
             </a>
             <!-- end link -->
-
-
-
-
-
-
-
-
 
         </div>
         <!-- end sidebar content -->

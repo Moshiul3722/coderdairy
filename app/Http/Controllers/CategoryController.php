@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -16,7 +17,7 @@ class CategoryController extends Controller
     public function index()
     {
         return view('admin.category.index')->with([
-            'caterories'  => Category::orderBy('name', 'ASC')->paginate(10)
+            'caterories'  => Category::where('user_id', Auth::id())->orderBy('name', 'ASC')->paginate(10)
         ]);
     }
 
@@ -43,35 +44,23 @@ class CategoryController extends Controller
         // Category validation
         $this->categoryValidation($request);
 
-
-
-        // try {
-        //     // Category store in database
-        //     Category::create([
-        //         'name'      =>  $request->name,
-        //         'slug'      =>  Str::slug($request->name)
-        //     ]);
-
-        //     // return response
-        //     return redirect()->route('category.index')->with('success', 'Category Created');
-        // } catch (\Throwable $th) {
-        //     return redirect()->route('category.index')->with('error', $th->getMessage());
-        // }
-
-        // $category_name = Category::find($request->name);
-        $category_name = Category::where('name', "=", $request->name)->first();
-
-        // dd($category_name);
+        $category_name = Category::where('name', "=", $request->category_name)->first();
 
         if (!empty($category_name)) {
-            return redirect()->route('category.create')->with('error', 'This Category Already Exist');
+            return redirect()->route('category.create')->with(
+                [
+                    'error' => 'This Category Already Exist',
+                    'category_name' => $request->category_name
+                ]
+            );
         } else {
             try {
                 // Category store in database
                 Category::create([
-                    'name'      =>  $request->name,
-                    'slug'      =>  Str::slug($request->name)
-                ]);
+                'name'    => $request->category_name,
+                'user_id' => Auth::id(),
+                'slug'    => Str ::slug($request->category_name)
+            ]);
 
                 // return response
                 return redirect()->route('category.index')->with('success', 'Category Created');
@@ -120,8 +109,9 @@ class CategoryController extends Controller
         try {
             //Update category
             $category->update([
-                'name'      => $request->name,
-                'slug'      => Str::slug($request->name)
+                'name'    => $request->category_name,
+                'user_id' => Auth::id(),
+                'slug'    => Str::slug($request->category_name)
             ]);
 
             // return response
@@ -147,7 +137,7 @@ class CategoryController extends Controller
     public function categoryValidation(Request $request)
     {
         return $request->validate([
-            'name'      => ['required', 'max:255', 'string']
+            'category_name'      => ['required', 'max:255', 'string']
         ]);
     }
 }

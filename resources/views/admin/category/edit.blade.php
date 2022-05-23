@@ -20,8 +20,8 @@
 
                         <div class="mt-6 flex">
                             <div class="flex-1 mr-2">
-                                <label for="name" class="formLabel">Name</label>
-                                <input type="text" name="name" id="name" placeholder="Category Name" class="formInput"
+                                <label for="category_name" class="formLabel">Name</label>
+                                <input type="text" name="category_name" id="category_name" placeholder="Category Name" class="formInput"
                                     value="{{ $category->name }}">
                                 @error('name')
                                     <p class="text-red-700">{{ $message }}</p>
